@@ -27,3 +27,21 @@ $arProp = \Bitrix\Iblock\PropertyTable::getRow(
 if ($arProp['ID'] > 0) {
     //...
 }
+
+//  Получение списка свойств
+$arPropList = \Bitrix\Iblock\PropertyTable::getList(
+    [
+        'filter' => [
+            '=IBLOCK_ID' => 1,
+            '=ACTIVE' => 'Y'
+        ],
+        'select' => [
+            'ID',
+            'NAME',
+            'CODE',
+            'PROPERTY_TYPE',
+            'MULTIPLE',
+        ]
+    ]
+)->fetchAll();
+
